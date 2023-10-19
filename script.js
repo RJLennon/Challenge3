@@ -93,6 +93,9 @@ function generatePassword() {
     baselinePassword += specialCharacters[randomSpecialChar];
     combinedArray = combinedArray.concat(specialCharacters);
   };
+  if (passwordLength===null) {
+    baselinePassword=null;
+  };
 
   //test combine array in console log 
   console.log(lowercaseLetters.length);
@@ -112,6 +115,8 @@ function generatePassword() {
 
   //combine baseline and random password
   var combinedPassword = baselinePassword+randomPassword;
+
+  //last step is to shuffle characters of the combined password
 
   return combinedPassword;
 };
