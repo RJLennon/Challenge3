@@ -68,26 +68,40 @@ function generatePassword() {
   var uppercaseLetters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
   var specialCharacters = ["!","@","#","$","%","^","&","*","(",")","~","`","-","_","+","=","{","[","}","]","|",":",";","<",",",">",".","?","/"];
   var numbers = ["0","1","2","3","4","5","6","7","8","9"];
+  var combinedArray = [];
   var baselinePassword = "";
   var randomPassword = "";
 
-  //Provide 1 of each of the selected criteria characters
+  //Provide 1 of each of the selected criteria characters & create combined array of selected criteria
   if (includeLowercase) {
     var randomLowercase = Math.floor(Math.random() * (lowercaseLetters.length));
     baselinePassword += lowercaseLetters[randomLowercase];
+    combinedArray = combinedArray.concat(lowercaseLetters);
   };
   if (includeUppercase) {
     var randomUppercase = Math.floor(Math.random() * (uppercaseLetters.length));
     baselinePassword += uppercaseLetters[randomUppercase];
+    combinedArray = combinedArray.concat(uppercaseLetters);
   };
   if (includeNumbers) {
     var randomNumber = Math.floor(Math.random() * (numbers.length));
     baselinePassword += numbers[randomNumber];
+    combinedArray = combinedArray.concat(numbers);
   };
   if (includeSpecialChar) {
     var randomSpecialChar = Math.floor(Math.random() * (specialCharacters.length));
     baselinePassword += specialCharacters[randomSpecialChar];
+    combinedArray = combinedArray.concat(specialCharacters);
   };
+
+  //test combine array in console log 
+  console.log(lowercaseLetters.length);
+  console.log(uppercaseLetters.length);
+  console.log(numbers.length);
+  console.log(specialCharacters.length);
+  console.log(combinedArray.length);
+  console.log(combinedArray[0]);
+  console.log(combinedArray[(combinedArray.length-1)]);
 
   //Generate password of inputted length
   for (i=0;i<(passwordLength);i++) {
