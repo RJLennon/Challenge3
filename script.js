@@ -72,7 +72,7 @@ function generatePassword() {
   var numbers = ["0","1","2","3","4","5","6","7","8","9"];
   var combinedArray = [];
   var baselinePassword = "";
-  var randomPassword = "";
+  var randomCharacters = "";
 
   //Provide 1 of each of the selected criteria characters & create combined array of selected criteria.
   if (includeLowercase) {
@@ -112,13 +112,25 @@ function generatePassword() {
   //Generate remaining characters of password using combined array.
   for (i=0;i<(passwordLength-baselinePassword.length);i++) {
     var randomCombined = Math.floor(Math.random() * (combinedArray.length));
-    randomPassword += combinedArray[randomCombined];
+    randomCharacters += combinedArray[randomCombined];
   };
 
   //Combine baseline and random password.
-  var combinedPassword = baselinePassword+randomPassword;
+  var combinedPassword = baselinePassword+randomCharacters;
 
-  //Last step is to shuffle characters of the combined password.
+  //Turn password string into an array
+  var passwordArray = combinedPassword.split("");
+
+  //shuffle array using Fischer-Yates algorithm (googled)
+  for (i=(passwordArray.length-1); i>0; i--) {
+    var randomPosition = Math.floor(Math.random() * (i+1));
+    var temp = passwordArray[i];
+    passwordArray[i] = passwordArray [randomPosition];
+    passwordArray[randomPosition] = temp;
+  };
+
+  //turn array back into a string
+  combinedPassword=passwordArray.join("");
 
   return combinedPassword;
 };
