@@ -20,8 +20,10 @@ function generatePassword() {
   //Input character preferences. Validate & Confirm.
   for (i=0;i<1;) {
     if (passwordLength === null) {
+      //Do not display prompts if user has previously cancelled.
       i=1;
     } else {
+      //Provide password criteria prompts.
       var includeLowercase = confirm("Include lowercase letters in password?");
       var includeUppercase = confirm("Include uppercase letters in password?");
       var includeNumbers = confirm("Include numbers in password?");
@@ -72,7 +74,7 @@ function generatePassword() {
   var baselinePassword = "";
   var randomPassword = "";
 
-  //Provide 1 of each of the selected criteria characters & create combined array of selected criteria
+  //Provide 1 of each of the selected criteria characters & create combined array of selected criteria.
   if (includeLowercase) {
     var randomLowercase = Math.floor(Math.random() * (lowercaseLetters.length));
     baselinePassword += lowercaseLetters[randomLowercase];
@@ -97,7 +99,7 @@ function generatePassword() {
     baselinePassword=null;
   };
 
-  //test combine array in console log 
+  //Test combine array in console log.
   console.log(lowercaseLetters.length);
   console.log(uppercaseLetters.length);
   console.log(numbers.length);
@@ -113,10 +115,10 @@ function generatePassword() {
     randomPassword += combinedArray[randomCombined];
   };
 
-  //combine baseline and random password
+  //Combine baseline and random password.
   var combinedPassword = baselinePassword+randomPassword;
 
-  //last step is to shuffle characters of the combined password
+  //Last step is to shuffle characters of the combined password.
 
   return combinedPassword;
 };
