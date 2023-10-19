@@ -102,18 +102,18 @@ function generatePassword() {
   console.log(combinedArray.length);
   console.log(combinedArray[0]);
   console.log(combinedArray[(combinedArray.length-1)]);
+  console.log(baselinePassword.length);
 
-  //Generate password of inputted length
-  for (i=0;i<(passwordLength);i++) {
-    //Generate random number from 0-25 corresponding to a letter.
-    var randomLetter = Math.floor(Math.random() * (lowercaseLetters.length));
-    
-    //add random letter from array for each iteration of the loop
-    randomPassword += lowercaseLetters[randomLetter];
-    
-  }
+  //Generate remaining characters of password using combined array.
+  for (i=0;i<(passwordLength-baselinePassword.length);i++) {
+    var randomCombined = Math.floor(Math.random() * (combinedArray.length));
+    randomPassword += combinedArray[randomCombined];
+  };
 
-  return baselinePassword;
+  //combine baseline and random password
+  var combinedPassword = baselinePassword+randomPassword;
+
+  return combinedPassword;
 };
 
 function writePassword() {
