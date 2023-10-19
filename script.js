@@ -57,7 +57,7 @@ function generatePassword() {
           i=1;
         }
       } else {
-        alert ("Error: Must confirm at least one of the provided criteria.")
+        alert ("Error: Must confirm at least one of the provided criteria.");
       };
       
     };
@@ -67,8 +67,27 @@ function generatePassword() {
   var lowercaseLetters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
   var uppercaseLetters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
   var specialCharacters = ["!","@","#","$","%","^","&","*","(",")","~","`","-","_","+","=","{","[","}","]","|",":",";","<",",",">",".","?","/"];
-  var numbers = ["0","1","2","3","4","5","6","7","8","9"]
+  var numbers = ["0","1","2","3","4","5","6","7","8","9"];
+  var baselinePassword = "";
   var randomPassword = "";
+
+  //Provide 1 of each of the selected criteria characters
+  if (includeLowercase) {
+    var randomLowercase = Math.floor(Math.random() * (lowercaseLetters.length));
+    baselinePassword += lowercaseLetters[randomLowercase];
+  };
+  if (includeUppercase) {
+    var randomUppercase = Math.floor(Math.random() * (uppercaseLetters.length));
+    baselinePassword += uppercaseLetters[randomUppercase];
+  };
+  if (includeNumbers) {
+    var randomNumber = Math.floor(Math.random() * (numbers.length));
+    baselinePassword += numbers[randomNumber];
+  };
+  if (includeSpecialChar) {
+    var randomSpecialChar = Math.floor(Math.random() * (specialCharacters.length));
+    baselinePassword += specialCharacters[randomSpecialChar];
+  };
 
   //Generate password of inputted length
   for (i=0;i<(passwordLength);i++) {
@@ -77,9 +96,10 @@ function generatePassword() {
     
     //add random letter from array for each iteration of the loop
     randomPassword += lowercaseLetters[randomLetter];
+    
   }
 
-  return randomPassword;
+  return baselinePassword;
 };
 
 function writePassword() {
