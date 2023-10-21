@@ -99,16 +99,6 @@ function generatePassword() {
     baselinePassword=null;
   };
 
-  //Test combine array in console log.
-  console.log(lowercaseLetters.length);
-  console.log(uppercaseLetters.length);
-  console.log(numbers.length);
-  console.log(specialCharacters.length);
-  console.log(combinedArray.length);
-  console.log(combinedArray[0]);
-  console.log(combinedArray[(combinedArray.length-1)]);
-  console.log(baselinePassword.length);
-
   //Generate remaining characters of password using combined array.
   for (i=0;i<(passwordLength-baselinePassword.length);i++) {
     var randomCombined = Math.floor(Math.random() * (combinedArray.length));
