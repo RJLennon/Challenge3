@@ -1,5 +1,9 @@
 # Challenge3
 
+Application URL: https://rjlennon.github.io/Challenge3/ 
+
+[Application Screenshot](./images/screenshot%20.png)
+
 ## User Story
 
 ```
@@ -27,3 +31,8 @@ THEN a password is generated that matches the selected criteria
 WHEN the password is generated
 THEN the password is either displayed in an alert or written to the page
 ```
+
+### Notes
+
+Code for how to shuffle an array using the Fisher-Yates method was sourced using google and Stack Overflow
+https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
